@@ -24,8 +24,8 @@ jobs:
         git config --global credential.helper store
         echo "https://${GitHubName}:${{ secrets.GITHUB_TOKEN }}@github.com" > ~/.git-credentials
         echo "${{ secrets.GITHUB_TOKEN }}" | docker login docker.pkg.github.com -u ${GitHubName} --password-stdin
-        git clone https://${GitHubName}:${{ secrets.PW }}@github.com/tonroses/memebot /home/runner/memebot
-        cd /home/runner/memebot
+        git clone https://${GitHubName}:${{ secrets.PW }}@github.com/tonroses/asu /home/runner/mirror
+        cd /home/runner/mirror
         docker build . --rm --force-rm --compress --no-cache=true --pull --file Dockerfile -t mirror-bot
         docker image ls
     - name: running Docker
